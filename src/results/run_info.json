@@ -1,0 +1,17 @@
+{
+  "data_path": "Epileptic Seizure Recognition.csv",
+  "dataset_shape": [
+    11500,
+    179
+  ],
+  "feature_count": 178,
+  "class_distribution": {
+    "0": 9200,
+    "1": 2300
+  },
+  "test_size": 0.2,
+  "training_time_seconds": 260.08001017570496,
+  "best_model": "RandomForest",
+  "best_auc": 0.9968165170132326,
+  "best_accuracy": 0.9704347826086956
+}

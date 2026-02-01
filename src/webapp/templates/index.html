@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seizure Predictor</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+    h1 { margin-bottom: 0.25rem; }
+    .muted { color: #555; }
+    textarea { width: 100%; height: 140px; font-family: monospace; padding: 0.75rem; }
+    input[type="number"] { width: 7rem; }
+    .row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .btn { background: black; color: white; border: 0; padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer; }
+    .btn:disabled { background: #888; }
+    .result { font-size: 1.1rem; margin-top: 0.5rem; }
+    code { background: #f3f3f3; padding: 0.2rem 0.35rem; border-radius: 6px; }
+    .warn { color: #b33; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Seizure Predictor</h1>
+  <div class="muted">Paste <strong>178 numbers</strong> (comma or space separated), set a threshold, and click Predict.</div>
+
+  {% if not has_model %}
+  <p class="warn">Model not found. Place <code>model_rf.joblib</code> next to <code>app.py</code> and restart the app.</p>
+  {% endif %}
+
+  <div class="card">
+    <label for="numbers"><strong>Input row (178 values)</strong></label>
+    <textarea id="numbers" placeholder="e.g. 0.12, -0.03, 0.18, ... (178 values) ..."></textarea>
+
+    <div class="row" style="margin-top:0.75rem;">
+      <label for="threshold"><strong>Threshold</strong></label>
+      <input id="threshold" type="number" step="0.001" value="0.424">
+      <button id="predictBtn" class="btn">Predict</button>
+    </div>
+
+    <div id="msg" class="result"></div>
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
